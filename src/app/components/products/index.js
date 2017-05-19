@@ -2,6 +2,6 @@ import React from 'react';
 
 export default () => (
   <div>
-    COMPONENT LOADED asdasd
+    <h1>COMPONENT LOADED asdasd</h1>
   </div>
 )
