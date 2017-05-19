@@ -7,7 +7,7 @@ module.exports = () => {
       id: i,
       name: `Product Nº ${i + 1}`,
       image: 'http://lorempixel.com/150/150/animals/',
-      price: `$ ${(i+1)*10}.00`,
+      price: (i+1)*10,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
     });
   };
