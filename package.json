@@ -6,8 +6,8 @@
   "scripts": {
     "test": "karma start",
     "start": "npm run build",
-    "build": "webpack -d && webpack-dev-server --content-base dist/ --inline --hot --port 1234 --history-api-fallback",
-    "create": "webpack"
+    "dev": "webpack -d && webpack-dev-server --content-base dist/ --inline --hot --port 1234 --history-api-fallback",
+    "build": "webpack"
   },
   "author": "Giancarlos Isasi <giancarlos.isasi@gmail.com>",
   "license": "ISC",
