@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 // components
+import Header from '../components/layout/header/';
 import ProductsIndex from '../components/products/';
 import NotFound from '../components/public/not-found';
 
@@ -10,7 +11,7 @@ import NotFound from '../components/public/not-found';
 export default (
   <Router>
     <div>
-      <header>Header</header>
+      <Header />
       <Switch>
         <Route exact path="/" component={ProductsIndex} />
         <Route component={NotFound} />

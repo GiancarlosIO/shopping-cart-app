@@ -4,8 +4,11 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
+// styles
+import '../styles/helper.scss';
+
 // Routes
-import Routes from './routers/';
+import Routes from './routes/';
 
 // Reducer
 import Reducers from './reducers/';
