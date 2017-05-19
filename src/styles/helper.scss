@@ -1,4 +1,7 @@
 .text {
   &-title { font-size: 24px };
   &-white { color: #fff };
+  &-center { text-align: center };
+
+  &-lineHeight-30 { line-height: 30px; }
 }
