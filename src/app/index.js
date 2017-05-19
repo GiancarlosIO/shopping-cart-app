@@ -4,6 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
+// API's
+import ProductAPI from './utils/api/product-api';
+
 // styles
 import '../styles/helper.scss';
 
@@ -17,7 +20,7 @@ import Reducers from './reducers/';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(Reducers, {}, composeEnhancers(
-  applyMiddleware(ReduxThunk.withExtraArgument())
+  applyMiddleware(ReduxThunk.withExtraArgument({ ProductAPI }))
 ));
 
 
