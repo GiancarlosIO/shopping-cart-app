@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import {
   Grid,
@@ -9,8 +10,14 @@ import {
 } from 'react-bootstrap';
 
 
+// Actions
+import {
+  getProductsByPage
+} from '../../actions/products-action';
+
 // Components
 import Filter from './filter';
+import ProductList from './product-list';
 
 export class ProductsIndex extends Component {
 
@@ -21,9 +28,15 @@ export class ProductsIndex extends Component {
 
   handleChangeFilterDebounce = _.debounce((value) => {
     console.log('value filter', value);
-  }, 300)
+  }, 300);
+
+  componentDidMount() {
+    this.props.dispatch(getProductsByPage(1));
+  }
 
   render() {
+    const { products } = this.props;
+
     return (
       <Grid>
         <PageHeader className="text-center">
@@ -33,10 +46,14 @@ export class ProductsIndex extends Component {
         <Row>
           <Filter handleChange={this.handleChangeFilter} />
         </Row>
-        <h1>Products Index</h1>
+        <Row>
+          <ProductList products={products} />
+        </Row>
       </Grid>
     )
   }
 }
 
-export default ProductsIndex;
+const mapStateToProps = (state) => ({ products: state.products.all })
+
+export default connect(mapStateToProps)(ProductsIndex);
