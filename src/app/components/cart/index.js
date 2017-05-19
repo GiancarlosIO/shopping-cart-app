@@ -6,53 +6,121 @@ import {
   Row,
   Column,
   Jumbotron,
-  Well
+  Well,
+  Button,
+  Modal
 } from 'react-bootstrap';
 
 // Components
 import CartList from './cart-list';
+import TotalCart from './total-cart';
 
 // actions
 import {
   removeProductCart,
-  updateQuantityCart
+  updateQuantityCart,
+  updateTotalCart
 } from '../../actions/cart-actions';
 
 export class CartIndex extends Component {
+
+  state = {
+    showConfirm: false,
+    loadingCheckout: false,
+  }
 
   updateQuantity = (id, value) => {
     console.log('updating quantity of', id);
     console.log('updating quantity value', value);
     this.props.dispatch(updateQuantityCart(id, value));
+    this.props.dispatch(updateTotalCart());
   }
 
   removeProduct = (id) => {
     console.log('removing product', id);
     this.props.dispatch(removeProductCart(id));
+    this.props.dispatch(updateTotalCart());
+  }
+
+  showConfirm = () => this.setState({showConfirm: true});
+  hideConfirm = () => this.setState({showConfirm: false});
+
+  handleCheckout = () => {
+    this.hideConfirm();
+    console.log('loading checkout...')
+    this.setState({loadingCheckout: true});
   }
 
   render() {
-    const { products } = this.props;
+    const { products, total, subtotal } = this.props;
     return (
-      <Grid>
-        <Row>
-          {
-            products ?
-            <CartList
-              products={products}
-              updateQuantity={this.updateQuantity}
-              removeProduct={this.removeProduct}
-            /> :
-            <h3 className="text-green">Loading</h3>
-          }
-        </Row>
-      </Grid>
+      <div>
+        {
+          Object.keys(products).length > 0 ?
+          <Grid>
+            <Row>
+              {
+                products ?
+                <CartList
+                  products={products}
+                  updateQuantity={this.updateQuantity}
+                  removeProduct={this.removeProduct}
+                /> :
+                <h3 className="text-green">Loading</h3>
+              }
+            </Row>
+            <Row>
+              <TotalCart total={total} subtotal={subtotal} />
+            </Row>
+            <Row>
+              <Button
+                bsStyle="success"
+                className="float-right margin-right-15 margin-bottom-15"
+                onClick={this.showConfirm}
+              >
+                Check-out
+              </Button>
+            </Row>
+            <Row>
+              <Modal show={this.state.showConfirm} onHide={this.hideConfirm}>
+                <Modal.Header closeButton>
+                  <Modal.Title>
+                    Are you sure?
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Button bsStyle="success" onClick={this.handleCheckout}>Yes!</Button>
+                  <Button className="margin-left-10" bsStyle="danger" onClick={this.hideConfirm}>No</Button>
+                </Modal.Body>
+              </Modal>
+              <div className={`spinner-container ${ this.state.loadingCheckout && 'flex'}`}>
+                <div className="spinner">
+                  <div className="spinner-double-bounce spinner-double-bounce-1"></div>
+                  <div className="spinner-double-bounce spinner-double-bounce-2"></div>
+                </div>
+              </div>
+            </Row>
+          </Grid> :
+          <Grid>
+            <Row>
+              <Well>
+                <h4>You have not products for checkout, go back to products page and add some products Buddy (屮◉◞益◟◉)屮</h4>
+                <Link to="/">t(ツ)_/¯ Back to products</Link>
+              </Well>
+            </Row>
+          </Grid>
+        }
+      </div>
     )
   }
 
 };
 
-const mapStateToProps = (state) => ({ products: state.cart.products });
+const mapStateToProps = (state) => ({
+  products: state.cart.products,
+  subtotal: state.cart.subtotal,
+  total: state.cart.total
+});
 
 export default connect(mapStateToProps)(CartIndex);
 
