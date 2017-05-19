@@ -47,7 +47,7 @@ const Product = ({ id, name, price, image, description, handleClick }) => {
       </ImageProduct>
       <DescriptionProduct>
         <h5 className="margin-top-none text-blue">{name}</h5>
-        <h6 className="text-red"> { price } </h6>
+        <h6 className="text-red"> ${ price }.00 </h6>
         <h6 className="margin-top-none text-midnight" >{description}</h6>
         <ActionsProduct>
           <Button bsStyle="success" onClick={handleClickButton}>
