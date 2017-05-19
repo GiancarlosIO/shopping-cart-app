@@ -20,8 +20,15 @@ export class Header extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
+          <Nav>
+              <CustomLink to="/asdasd" childrenComponent={ () => (
+                    <Glyphicon glyph="send" />
+                  )
+                }
+              />
+          </Nav>
           <Nav pullRight>
-            <CustomLink to="/asdasd" label="NotFound"/>
+            <CustomLink to="/" label="Products" />
             <CustomLink to="/cart" childrenComponent={ () => (
                   <div className="text-normal">
                     <Glyphicon glyph="shopping-cart" />
