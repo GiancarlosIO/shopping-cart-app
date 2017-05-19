@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   Nav,
   Navbar,
@@ -10,9 +11,10 @@ import {
 import CustomLink from './custom-link';
 
 export class Header extends Component {
+
   render() {
     return (
-      <Navbar inverse collapseOnSelect fluid>
+      <Navbar inverse collapseOnSelect fluid fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">Shopping cart App</Link>
@@ -28,11 +30,11 @@ export class Header extends Component {
               />
           </Nav>
           <Nav pullRight>
-            <CustomLink to="/" label="Products" />
+            <CustomLink to="/" activeOnlyWhenExact label="Products" />
             <CustomLink to="/cart" childrenComponent={ () => (
                   <div className="text-normal">
                     <Glyphicon glyph="shopping-cart" />
-                    { this.props.cartCount }
+                    <span className="margin-left-10">{ this.props.cartCount }</span>
                   </div>
                 )
               }
@@ -44,4 +46,14 @@ export class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  const products = { ...state.cart.products };
+  const count = Object.keys(products).length > 0 ? Object.keys(products).map(index => products[index].quantity).reduce((total, quantity) => (total + quantity)) : 0;
+  return {
+    cartCount: count
+  }
+}
+
+const HeaderConnected = connect(mapStateToProps)(Header);
+
+export default withRouter(HeaderConnected);
