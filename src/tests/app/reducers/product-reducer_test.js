@@ -1,4 +1,3 @@
-import React from 'react';
 import { expect } from 'chai';
 import * as Constants from '../../../app/constants/';
 import ProductReducer from '../../../app/reducers/product-reducer';
