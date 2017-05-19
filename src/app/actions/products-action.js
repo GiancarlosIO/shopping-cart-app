@@ -18,7 +18,7 @@ export const getProductsByPage = (page) => {
         dispatch(setProducts(productsObj));
       })
       .catch(error => {
-        console.log('error to get products', error);
+        console.log('error to get products by page', error);
       })
   }
 };
