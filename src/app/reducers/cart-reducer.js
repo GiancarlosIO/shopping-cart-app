@@ -26,7 +26,6 @@ export default function(state=initialState, action) {
         }
       };
     case REMOVE_PRODUCT_CART:
-      console.log('removing', action);
       let products = { ...state.products };
       delete products[`${action.payload}`];
       return {
@@ -50,7 +49,7 @@ export default function(state=initialState, action) {
         subtotal = Object.keys(productCarts).map(index => {
           return productCarts[`${index}`].price *productCarts[`${index}`].quantity;
         }).reduce((total, actual) => parseInt(total) + parseInt(actual));
-        total = parseFloat(subtotal * 1.18).toFixed(2);
+        total = parseFloat((subtotal * 1.18).toFixed(2));
       } else {
         subtotal = null;
         total = null;

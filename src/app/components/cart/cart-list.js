@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Well } from 'react-bootstrap';
 
@@ -27,5 +28,11 @@ const CartList = ({ products, updateQuantity, removeProduct }) => {
   )
 
 };
+
+CartList.propTypes = {
+  products: PropTypes.object,
+  updateQuantity: PropTypes.func.isRequired,
+  removeProduct: PropTypes.func.isRequired
+}
 
 export default CartList;

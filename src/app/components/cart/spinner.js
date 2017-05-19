@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 const HeaderSpinner = glamorous.h3({
   padding: '20px',
@@ -16,5 +17,10 @@ const Spinner = ({ loading, text }) => (
     <HeaderSpinner>{text}</HeaderSpinner>
   </div>
 )
+
+Spinner.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired
+}
 
 export default Spinner;

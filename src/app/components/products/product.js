@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous, { Div } from 'glamorous';
+import PropTypes from 'prop-types';
 
 import {
   Button,
@@ -59,5 +60,14 @@ const Product = ({ id, name, price, image, description, handleClick }) => {
     </ContainerProduct>
   )
 };
+
+Product.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired
+}
 
 export default Product;

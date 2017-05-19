@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Filter = (props) => {
 
@@ -17,6 +18,8 @@ const Filter = (props) => {
 
 }
 
-
+Filter.propTypes = {
+  handleChange: PropTypes.func.isRequired
+}
 
 export default Filter;

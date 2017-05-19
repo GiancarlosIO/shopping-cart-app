@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 import Product from './product';
 
@@ -29,6 +30,11 @@ const ProductList = ({ products, handleClick }) => {
       }
     </PaddedDiv>
   );
+}
+
+ProductList.propTypes = {
+  products: PropTypes.object,
+  handleClick: PropTypes.func.isRequired
 }
 
 export default ProductList;

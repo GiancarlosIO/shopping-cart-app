@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 const TotalCartContainer = glamorous.div({
   display: 'flex',
@@ -20,5 +21,10 @@ const TotalCart = ({ total, subtotal }) => (
       <TotalCartRow className="text-red text-title text-bold">Total: ${total}</TotalCartRow>
     </TotalCartContainer>
 );
+
+TotalCart.propTypes = {
+  total: PropTypes.number,
+  subtotal: PropTypes.number
+}
 
 export default TotalCart;

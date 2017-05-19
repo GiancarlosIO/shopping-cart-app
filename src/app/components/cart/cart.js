@@ -1,5 +1,6 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 import {
   Glyphicon,
@@ -116,6 +117,17 @@ const Cart = ({updateQuantity, removeProduct, id, name, image, description, quan
       </NumberCart>
     </ContainerCart>
   );
+}
+
+Cart.propTypes = {
+  updateQuantity: PropTypes.func.isRequired,
+  removeProduct: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired
 }
 
 export default Cart;
