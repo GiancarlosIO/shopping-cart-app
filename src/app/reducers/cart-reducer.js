@@ -1,20 +1,12 @@
 import {
   ADD_PRODUCT_CART,
   REMOVE_PRODUCT_CART,
-  UPDATE_QUANTITY_CAR
+  UPDATE_QUANTITY_CAR,
+  UPDATE_TOTAL_CART
 } from '../constants/';
 
 const initialState = {
-  products: {
-    0 : {
-      id: 0,
-      name: "Product Nº 1",
-      price: "99999",
-      image: "http://lorempixel.com/150/150/animals/",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      quantity: 3
-    }
-  },
+  products: {},
   subtotal: null,
   total: null
 };
@@ -51,6 +43,23 @@ export default function(state=initialState, action) {
           [`${productToUpdate.id}`]: productToUpdate
         }
       }
+    case UPDATE_TOTAL_CART:
+      const productCarts = { ...state.products }
+      let subtotal, total;
+      if (Object.keys(productCarts).length > 0) {
+        subtotal = Object.keys(productCarts).map(index => {
+          return productCarts[`${index}`].price *productCarts[`${index}`].quantity;
+        }).reduce((total, actual) => parseInt(total) + parseInt(actual));
+        total = parseFloat(subtotal * 1.18).toFixed(2);
+      } else {
+        subtotal = null;
+        total = null;
+      }
+      return {
+        ...state,
+        subtotal,
+        total
+      };
     default:
       return state;
   }
