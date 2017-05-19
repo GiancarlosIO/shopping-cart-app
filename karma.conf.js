@@ -6,12 +6,10 @@ module.exports = function (config) {
     singleRun: true,
     frameworks: ['mocha'],
     files: [
-      'node_modules/jquery/dist/jquery.min.js',
-      'node_modules/foundation-sites/dist/js/foundation.min.js',
-      'src/app/tests/**/*.js'
+      'src/tests/**/*.js'
     ],
     preprocessors: {
-      'src/app/tests/**/*.js': ['webpack', 'sourcemap']
+      'src/tests/**/*.js': ['webpack', 'sourcemap']
     },
     reporters: ['mocha'],
     client: {
