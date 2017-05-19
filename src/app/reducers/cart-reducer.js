@@ -4,19 +4,23 @@ import {
 } from '../constants/';
 
 const initialState = {
-  products: null,
+  products: {},
   subtotal: null,
   total: null
 };
 
 export default function(state=initialState, action) {
-  switch (action.payload) {
+  switch (action.type) {
     case ADD_PRODUCT_CART:
+      let product = {
+        ...action.payload,
+        quantity: state.products[`${action.payload.id}`] ? state.products[`${action.payload.id}`].quantity + 1 : 1
+      }
       return {
         ...state,
         products: {
           ...state.products,
-          [`${action.payload.id}`]: action.payload
+          [`${action.payload.id}`]: product
         }
       };
     case REMOVE_PRODUCT_CART:
