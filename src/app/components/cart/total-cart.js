@@ -15,7 +15,7 @@ const TotalCartRow = glamorous.div({
 });
 
 const TotalCart = ({ total, subtotal }) => (
-    <TotalCartContainer>
+    <TotalCartContainer className="total-cart">
       <TotalCartRow className="midnight">Subtotal: {subtotal}</TotalCartRow>
       <TotalCartRow className="text-green text-14">IGV(18%): {parseFloat(subtotal*0.18).toFixed(2)}</TotalCartRow>
       <TotalCartRow className="text-red text-title text-bold">Total: ${total}</TotalCartRow>

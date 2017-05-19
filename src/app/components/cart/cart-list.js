@@ -22,7 +22,7 @@ const CartList = ({ products, updateQuantity, removeProduct }) => {
   };
 
   return (
-    <div>
+    <div className="cart-list">
       { renderCartProducts() }
     </div>
   )
