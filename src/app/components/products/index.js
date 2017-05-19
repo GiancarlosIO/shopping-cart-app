@@ -12,12 +12,23 @@ import {
 
 // Actions
 import {
-  getProductsByPage
+  setSearchText,
+  getProductsByPage,
+  getAllProducts
 } from '../../actions/products-action';
+import {
+  addProductCart,
+  removeProductCart
+} from '../../actions/cart-actions';
 
 // Components
 import Filter from './filter';
 import ProductList from './product-list';
+
+// Selectors
+import {
+  getFilteredProducts
+} from '../../selectors/';
 
 export class ProductsIndex extends Component {
 
@@ -28,10 +39,16 @@ export class ProductsIndex extends Component {
 
   handleChangeFilterDebounce = _.debounce((value) => {
     console.log('value filter', value);
+    this.props.dispatch(setSearchText(value));
   }, 300);
 
+  handleClickProduct = (product) => {
+    this.props.dispatch(addProductCart(product));
+  }
+
   componentDidMount() {
-    this.props.dispatch(getProductsByPage(1));
+    // this.props.dispatch(getProductsByPage(1));
+    this.props.dispatch(getAllProducts());
   }
 
   render() {
@@ -47,13 +64,13 @@ export class ProductsIndex extends Component {
           <Filter handleChange={this.handleChangeFilter} />
         </Row>
         <Row>
-          <ProductList products={products} />
+          <ProductList products={products} handleClick={this.handleClickProduct} />
         </Row>
       </Grid>
     )
   }
 }
 
-const mapStateToProps = (state) => ({ products: state.products.all })
+const mapStateToProps = (state) => ({ products: getFilteredProducts(state) });
 
 export default connect(mapStateToProps)(ProductsIndex);
