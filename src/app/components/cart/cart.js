@@ -54,7 +54,7 @@ const NumberCart = glamorous.div({
 const Cart = ({updateQuantity, removeProduct, id, name, image, description, quantity, price}) => {
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    const value = parseInt(e.target.value);
     updateQuantity(id, value);
   }
 
