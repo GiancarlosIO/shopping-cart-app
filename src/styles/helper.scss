@@ -1,7 +1,31 @@
 .text {
-  &-title { font-size: 24px };
-  &-white { color: #fff };
-  &-center { text-align: center };
+  &-title { font-size: 24px; }
+  &-white { color: #fff; }
+  &-center { text-align: center; }
 
   &-lineHeight-30 { line-height: 30px; }
+  // colors
+  &-blue { color: #2980b9; }
+  &-red { color: #e74c3c; }
+  &-green { color: #16a085; }
+  &-midnight { color: #2c3e50; }
+}
+
+.img {
+  &-card {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.margin {
+  &-none { margin: 0 !important; }
+  &-top-none { margin-top: 0px !important; }
+  &-left-10 { margin-left: 10px; }
+}
+
+.padding {
+  &-top { padding-top: 100px; }
 }
