@@ -17,13 +17,6 @@ const CartList = ({ products, updateQuantity, removeProduct }) => {
           removeProduct={removeProduct}
         />
       ));
-    } else {
-      return (
-        <Well>
-          <h4>You have not products for checkout, go back to products page and add some products Buddy (屮◉◞益◟◉)屮</h4>
-          <Link to="/">t(ツ)_/¯ Back to products</Link>
-        </Well>
-      )
     }
   };
 
