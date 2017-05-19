@@ -7,12 +7,13 @@
     "test": "karma start",
     "start": "npm run build",
     "dev": "webpack -d && webpack-dev-server --content-base dist/ --inline --hot --port 1234 --history-api-fallback",
-    "build": "webpack"
+    "server-api": "json-server --watch db.json --port 3000"
   },
   "author": "Giancarlos Isasi <giancarlos.isasi@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
+    "json-server": "^0.10.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
