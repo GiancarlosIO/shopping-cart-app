@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
+    "glamorous": "^3.14.0",
     "json-server": "^0.10.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
