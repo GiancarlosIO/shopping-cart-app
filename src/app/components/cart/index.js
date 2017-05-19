@@ -14,6 +14,7 @@ import {
 // Components
 import CartList from './cart-list';
 import TotalCart from './total-cart';
+import Spinner from './spinner';
 
 // actions
 import {
@@ -27,17 +28,15 @@ export class CartIndex extends Component {
   state = {
     showConfirm: false,
     loadingCheckout: false,
+    copySpinner: ''
   }
 
   updateQuantity = (id, value) => {
-    console.log('updating quantity of', id);
-    console.log('updating quantity value', value);
     this.props.dispatch(updateQuantityCart(id, value));
     this.props.dispatch(updateTotalCart());
   }
 
   removeProduct = (id) => {
-    console.log('removing product', id);
     this.props.dispatch(removeProductCart(id));
     this.props.dispatch(updateTotalCart());
   }
@@ -47,8 +46,17 @@ export class CartIndex extends Component {
 
   handleCheckout = () => {
     this.hideConfirm();
-    console.log('loading checkout...')
-    this.setState({loadingCheckout: true});
+    // Simulate process payment
+    this.setState({loadingCheckout: true, copySpinner: 'Processing payment...'}, () => {
+      setTimeout(() => {
+        this.setState({copySpinner: 'Process completed!, thx buddy  (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'}, () => {
+          setTimeout(() => {
+            this.setState({loadingCheckout: false, copySpinner: ''});
+            location.replace("/");
+          }, 2000);
+        });
+      }, 3500)
+    });
   }
 
   render() {
@@ -93,12 +101,18 @@ export class CartIndex extends Component {
                   <Button className="margin-left-10" bsStyle="danger" onClick={this.hideConfirm}>No</Button>
                 </Modal.Body>
               </Modal>
-              <div className={`spinner-container ${ this.state.loadingCheckout && 'flex'}`}>
-                <div className="spinner">
-                  <div className="spinner-double-bounce spinner-double-bounce-1"></div>
-                  <div className="spinner-double-bounce spinner-double-bounce-2"></div>
-                </div>
-              </div>
+              <Spinner loading={this.state.loadingCheckout} text={this.state.copySpinner} />
+              <Modal show={this.state.showConfirm} onHide={this.hideConfirm}>
+                <Modal.Header closeButton>
+                  <Modal.Title>
+                    Are you sure?
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Button bsStyle="success" onClick={this.handleCheckout}>Yes!</Button>
+                  <Button className="margin-left-10" bsStyle="danger" onClick={this.hideConfirm}>No</Button>
+                </Modal.Body>
+              </Modal>
             </Row>
           </Grid> :
           <Grid>
