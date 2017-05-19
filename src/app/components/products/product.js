@@ -37,12 +37,12 @@ const ActionsProduct = glamorous.div({
   alignItems: 'center'
 });
 
-const Product = ({ id, name, price, image, description, handleClick }) => {
+export const Product = ({ id, name, price, image, description, handleClick }) => {
 
   const handleClickButton = () => handleClick({id, name, price, image, description});
 
   return (
-    <ContainerProduct >
+    <ContainerProduct className="product" >
       <ImageProduct>
         <img className="img-card" src={image} alt={name} />
       </ImageProduct>
