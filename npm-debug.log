@@ -1,5 +1,10 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'run', 'test', '--watch' ]
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'test',
+1 verbose cli   '--',
+1 verbose cli   '--watch' ]
 2 info using npm@3.10.10
 3 info using node@v6.10.3
 4 verbose run-script [ 'pretest', 'test', 'posttest' ]
@@ -10,10 +15,10 @@
 9 verbose lifecycle shopping-cart@1.0.0~test: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/giancarlos/Documents/crehana-test/shopping-cart/node_modules/.bin:/home/giancarlos/Documents/crehana-test/shopping-cart/node_modules/.bin:/home/giancarlos/.config/yarn/link/node_modules/.bin:/home/giancarlos/Documents/crehana-test/shopping-cart/node_modules/.bin:/home/giancarlos/.config/yarn/link/node_modules/.bin:/usr/share/yarn/bin/node-gyp-bin:/home/giancarlos/.rvm/gems/ruby-2.3.1/bin:/home/giancarlos/.rvm/gems/ruby-2.3.1@global/bin:/home/giancarlos/.rvm/rubies/ruby-2.3.1/bin:/home/giancarlos/bin:/home/giancarlos/.local/bin:/home/giancarlos/bin:/home/giancarlos/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/giancarlos/.rvm/bin:/home/giancarlos/Android/Sdk/tools:/home/giancarlos/Android/Sdk/platform-tools:/home/giancarlos/.rvm/bin:/home/giancarlos/.rvm/bin:/home/giancarlos/.rvm/bin:/home/giancarlos/Android/Sdk/tools:/home/giancarlos/Android/Sdk/platform-tools
 10 verbose lifecycle shopping-cart@1.0.0~test: CWD: /home/giancarlos/Documents/crehana-test/shopping-cart
 11 silly lifecycle shopping-cart@1.0.0~test: Args: [ '-c',
-11 silly lifecycle   'NODE_ENV=test mocha -r jsdom-global/register mock-local-storage --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/' ]
+11 silly lifecycle   'NODE_ENV=test mocha -r jsdom-global/register --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/ "--watch"' ]
 12 silly lifecycle shopping-cart@1.0.0~test: Returned: code: 1  signal: null
 13 info lifecycle shopping-cart@1.0.0~test: Failed to exec test script
-14 verbose stack Error: shopping-cart@1.0.0 test: `NODE_ENV=test mocha -r jsdom-global/register mock-local-storage --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/`
+14 verbose stack Error: shopping-cart@1.0.0 test: `NODE_ENV=test mocha -r jsdom-global/register --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/ "--watch"`
 14 verbose stack Exit status 1
 14 verbose stack     at EventEmitter.<anonymous> (/usr/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
 14 verbose stack     at emitTwo (events.js:106:13)
@@ -26,18 +31,18 @@
 15 verbose pkgid shopping-cart@1.0.0
 16 verbose cwd /home/giancarlos/Documents/crehana-test/shopping-cart
 17 error Linux 4.4.0-77-generic
-18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "run" "test" "--watch"
+18 error argv "/usr/bin/nodejs" "/usr/bin/npm" "run" "test" "--" "--watch"
 19 error node v6.10.3
 20 error npm  v3.10.10
 21 error code ELIFECYCLE
-22 error shopping-cart@1.0.0 test: `NODE_ENV=test mocha -r jsdom-global/register mock-local-storage --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/`
+22 error shopping-cart@1.0.0 test: `NODE_ENV=test mocha -r jsdom-global/register --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/ "--watch"`
 22 error Exit status 1
-23 error Failed at the shopping-cart@1.0.0 test script 'NODE_ENV=test mocha -r jsdom-global/register mock-local-storage --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/'.
+23 error Failed at the shopping-cart@1.0.0 test script 'NODE_ENV=test mocha -r jsdom-global/register --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/ "--watch"'.
 23 error Make sure you have the latest version of node.js and npm installed.
 23 error If you do, this is most likely a problem with the shopping-cart package,
 23 error not with npm itself.
 23 error Tell the author that this fails on your system:
-23 error     NODE_ENV=test mocha -r jsdom-global/register mock-local-storage --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/
+23 error     NODE_ENV=test mocha -r jsdom-global/register --compilers js:babel-core/register --require ./src/tests/test_helper.js --recursive ./src/tests/ "--watch"
 23 error You can get information on how to open an issue for this project with:
 23 error     npm bugs shopping-cart
 23 error Or if that isn't available, you can get their info via:

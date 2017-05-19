@@ -4,7 +4,7 @@ import _$ from 'jquery';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
-const rerequire = jsdom.rerequire;
+require('jsdom-global')();
 
 const $ = _$(window);
 chai.use(chaiEnzyme());
