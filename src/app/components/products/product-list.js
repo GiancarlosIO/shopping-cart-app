@@ -11,7 +11,7 @@ const PaddedDiv = glamorous.div({
   justifyContent: 'space-around'
 });
 
-const ProductList = ({ products, handleClick }) => {
+export const ProductList = ({ products, handleClick }) => {
 
   const renderProducts = () => {
     return Object.keys(products).length > 0 ?
