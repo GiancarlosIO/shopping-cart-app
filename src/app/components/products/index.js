@@ -18,7 +18,7 @@ import {
 } from '../../actions/products-action';
 import {
   addProductCart,
-  removeProductCart
+  updateTotalCart,
 } from '../../actions/cart-actions';
 
 // Components
@@ -44,6 +44,7 @@ export class ProductsIndex extends Component {
 
   handleClickProduct = (product) => {
     this.props.dispatch(addProductCart(product));
+    this.props.dispatch(updateTotalCart());
   }
 
   componentDidMount() {
@@ -53,7 +54,6 @@ export class ProductsIndex extends Component {
 
   render() {
     const { products } = this.props;
-
     return (
       <Grid>
         <PageHeader className="text-center">
