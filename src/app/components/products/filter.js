@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Filter = (props) => {
+export const Filter = (props) => {
 
   const handleChange = (e) => props.handleChange(e);
 
